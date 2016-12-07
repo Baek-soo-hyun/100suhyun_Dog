@@ -2,7 +2,10 @@ package com.hanbit.animal;
 
 import org.apache.commons.lang3.StringUtils;
 
-public abstract class Animal {
+import com.hanbit.Breathable;
+import com.hanbit.Livable;
+
+public abstract class Animal implements Breathable, Livable {
 	
 	protected String name;
 	protected final String kind;
@@ -12,6 +15,16 @@ public abstract class Animal {
 		this.name = name;
 		this.kind = kind;
 		this.color = color;
+	}
+	
+	@Override
+	public boolean isLive() {
+		return true;
+	}
+	
+	@Override
+	public void breathe() {
+		System.out.println("산소 -> 이산화탄소");
 	}
 	
 	@Override
@@ -48,4 +61,5 @@ public abstract class Animal {
 	public String getColor() {
 		return color;
 	}
+	
 }

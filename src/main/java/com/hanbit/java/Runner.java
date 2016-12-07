@@ -1,23 +1,43 @@
 package com.hanbit.java;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.hanbit.Breathable;
+import com.hanbit.Livable;
 import com.hanbit.animal.Cat;
 import com.hanbit.animal.Dog;
+import com.hanbit.animal.Hamster;
 
 public class Runner {
 	
 	public static void main(String[] args) {
-		Dog dog = new Dog("도베르만", "검정");
-		Dog dog2 = new Dog("검둥이", "도베르만", "검정");
-		Dog dog3 = new Dog("바둑이", "달마시안", "검정/흰색");
-		Cat cat = new Cat("길고양이", "줄무늬");
-
-		dog.setName("");
-		cat.setName("");
+		Livable dog = new Dog("도베르만", "검정");
+		Livable cat = new Cat("길고양이", "줄무늬");
+		Livable hamster = new Hamster("모름", "줄무늬");
 		
-		System.out.println(dog);
-		System.out.println(dog2);
-		System.out.println(dog3);
-		System.out.println(cat);
+		List list = new ArrayList();
+		Map map = new HashMap();
+		
+		Livable tree = () -> { return true; };
+		
+		useType(dog);
+		useType(cat);
+		useType(hamster);
 	}
-
+	
+	private static void useType(Livable livable) {
+		if (livable instanceof Cat) {
+			Cat cat = (Cat) livable;
+			cat.climbTree();
+		}
+		else if (livable instanceof Breathable) {
+			Breathable breathable = (Breathable) livable;
+			breathable.breathe();
+		}
+	}
+	
+	System.out.println(livable.getClass().getSimpleName());
 }
